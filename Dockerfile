@@ -1,6 +1,6 @@
 # Etapa de Compilación (Build Stage)
 # Usa una imagen de Maven + JDK para compilar el proyecto
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -18,7 +18,7 @@ RUN mvn clean package -DskipTests
 
 # Etapa de Ejecución (Run Stage)
 # Usa solo el JRE para una imagen más liviana
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 EXPOSE 8080
